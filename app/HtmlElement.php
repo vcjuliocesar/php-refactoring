@@ -62,7 +62,7 @@ class HtmlElement
         return htmlentities($this->content, ENT_QUOTES, 'UTF-8');
     }
 
-    public function close() : string
+    public function close()
     {
         return '</'.$this->name.'>';
     }
