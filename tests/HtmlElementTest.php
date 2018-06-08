@@ -5,6 +5,14 @@ use App\HtmlElement;
 
 class HtmlElementTest extends TestCase
 {
+    /**@test */
+    function it_checks_if_a_element_is_void_or_not()
+    {
+        $this->assertFalse((new HtmlElement('p'))->isVoid());
+
+        $this->assertTrue((new HtmlElement('img'))->isVoid());
+    }
+
     /** @test */
     function it_generates_html_elements_with_content()
     {
