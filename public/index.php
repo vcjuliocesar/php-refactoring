@@ -3,6 +3,11 @@ require '../vendor/autoload.php';
 
 //$element = new \App\HtmlElement;
 $element = new \App\HtmlElement('p',[],'Este es el contenido');
+
+echo $element->open().'Cualquier contenido'.$element->close();
+
+exit;
+
 echo htmlentities($element->render(),ENT_QUOTES,'utf-8');
 
 echo "<br><br>";
