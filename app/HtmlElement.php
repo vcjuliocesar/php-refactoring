@@ -31,13 +31,16 @@ class HtmlElement
 
     public function open() : string
     {
-        if(! empty($this->attributes)) {
-            $result = '<'.$this->name.$this->attributes().'>';
+        if($this->hasAttributes()) {
+            return '<'.$this->name.$this->attributes().'>';
         } else {
-            $result = '<'.$this->name.'>';
+            return '<'.$this->name.'>';
         }
+    }
 
-        return $result;
+    public function hasAttributes() : bool
+    {
+        return ! empty($this->attributes);
     }
 
     public function attributes() : string
@@ -54,12 +57,10 @@ class HtmlElement
     protected function renderAttributes($attribute,$value)
     {
         if(is_numeric($attribute)) {
-            $htmlAttributes = ' '.$value;
-        } else {
-            $htmlAttributes =  ' '.$attribute.'="'.htmlentities($value, ENT_QUOTES, 'UTF-8').'"'; // name="value";
+            return ' '.$value;
         }
 
-        return $htmlAttributes;
+        return ' '.$attribute.'="'.htmlentities($value, ENT_QUOTES, 'UTF-8').'"'; // name="value";
     }
 
     public function isVoid() : bool
